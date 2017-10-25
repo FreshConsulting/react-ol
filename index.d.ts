@@ -5,7 +5,7 @@
 /// <reference types="react" />
 /// <reference types="openlayers" />
 
-declare module "ol-react" {
+declare module "react-ol" {
     export import control = __OLReact.control;
     export import geom = __OLReact.geom;
     export import interaction = __OLReact.interaction;
