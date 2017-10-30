@@ -33,8 +33,11 @@ export default class Overlay extends OLComponent {
     if (typeof props.element !== 'undefined') {
       ReactDOM.render(props.element, this.element);
       this.overlay.setElement(this.element);
-      this.element.onclick = function () {
-        console.log('overlay clicked')
+      this.element.onclick = function (e) {
+        if (props.element && props.element.props &&
+          typeof props.element.props.onClick === 'function') {
+          props.element.props.onClick(e);
+        }
       }
     }
     if (typeof props.offset !== 'undefined') {
