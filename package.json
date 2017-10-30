@@ -1,6 +1,6 @@
 {
   "name": "react-ol",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "React interface for openlayers",
   "main": "lib/index.js",
   "scripts": {
