@@ -8,7 +8,7 @@ export default class View extends OLComponent {
     super(props);
     var opts = {
       center: props.initialCenter,
-      resolution: props.initialResolution,
+      resolution: props.initialResolution === null ? undefined : props.initialResolution,
       rotation: props.initialRotation,
       zoom: props.initialZoom,
     };
