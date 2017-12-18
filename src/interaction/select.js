@@ -8,6 +8,8 @@ export default class Select extends OLInteraction {
   createInteraction (props) {
     return new ol.interaction.Select({
       condition: props.condition,
+      toggleCondition: props.toggleCondition,
+      filter: props.filter,
       style: props.style ? buildStyle(props.style) : undefined
     })
   }
@@ -15,6 +17,8 @@ export default class Select extends OLInteraction {
 
 Select.propTypes = Object.assign({}, OLInteraction.propTypes, {
   condition: PropTypes.func,
+  toggleCondition: PropTypes.func,
+  filter: PropTypes.func,
   select: PropTypes.func
 })
 
