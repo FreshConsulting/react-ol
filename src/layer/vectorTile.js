@@ -47,6 +47,7 @@ VectorTile.propTypes = {
   style: PropTypes.oneOfType([
     PropTypes.instanceOf(ol.style.Style),
     PropTypes.object,
+    PropTypes.func,
     PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.instanceOf(ol.style.Style),
       PropTypes.object
