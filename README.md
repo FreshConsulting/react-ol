@@ -39,3 +39,7 @@ image: {
 It's early days! If you're familiar with react and/or openlayers and are interested in helping, please get in touch. Available on [github](https://github.com/elbstack/react-ol) and [npm](https://www.npmjs.com/package/react-ol).
 
 I am especially interested in assistance with having each component be optionally [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components). This would allow binding of the components with, say, Redux and for sophisticated state management outside of OpenLayers.
+
+### About this fork
+
+We forked this library primarily to add support for vector tiles and plan on making additional updates as needed.
