@@ -29,6 +29,6 @@
     "openlayers": "^4.0.1",
     "prop-types": "^15.5.10"
   },
-  "repository": "https://github.com/elbstack/react-ol.git",
+  "repository": "https://github.com/FreshConsulting/react-ol.git",
   "license": "MIT"
 }
