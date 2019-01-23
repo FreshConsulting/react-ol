@@ -16,6 +16,8 @@ export default class OLLayer extends OLContainer {
             zIndex: props.zIndex,
             minResolution: props.minResolution,
             maxResolution: props.maxResolution,
+            renderMode: props.renderMode,
+            preload: props.preload
         }
     }
 
@@ -26,6 +28,8 @@ export default class OLLayer extends OLContainer {
         if (newProps.zIndex !== undefined) this.layer.setZIndex(newProps.zIndex)
         if (newProps.minResolution !== undefined) this.layer.setMinResolution(newProps.minResolution)
         if (newProps.maxResolution !== undefined) this.layer.setMaxResolution(newProps.maxResolution)
+        if (newProps.renderMode !== undefined) this.layer.set('renderMode', newProps.renderMode)
+        if (newProps.preload !== undefined) this.layer.setPreload(newProps.preload)
     }
 
     componentDidMount() {
@@ -69,6 +73,8 @@ OLLayer.PropTypes = {
     zIndex: PropTypes.number,
     minResolution: PropTypes.number,
     maxResolution: PropTypes.number,
+    renderMode: PropTypes.string,
+    preload: PropTypes.number,
     selectable: PropTypes.bool,
     onSelect: PropTypes.func,
     hoverable: PropTypes.bool,
