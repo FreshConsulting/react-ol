@@ -14,6 +14,7 @@ export default class Feature extends OLComponent {
 
   updateFromProps(props) {
     this.feature.setStyle(buildStyle(props.style));
+    this.feature.setProperties(props.properties)
   }
 
   getChildContext() {
@@ -21,7 +22,7 @@ export default class Feature extends OLComponent {
       feature: this.feature
     }
   }
-  
+
   componentDidMount() {
     this.context.source.addFeature(this.feature);
   }
@@ -41,6 +42,7 @@ export default class Feature extends OLComponent {
 
 Feature.propTypes = {
   style: PropTypes.object,
+  properties: PropTypes.object,
   children: PropTypes.element,
   id: PropTypes.any.isRequired
 }
