@@ -64,19 +64,19 @@ export default class Map extends React.Component {
       return;
     }
     let pixel = this.map.getEventPixel(evt.originalEvent);
-    let feature = this.map.forEachFeatureAtPixel(pixel, function (x) {
-      return x
-    })
+    let feature = this.map.forEachFeatureAtPixel(pixel, function (feature) {
+      return feature
+    }, { hitTolerance: this.props.featureClickHitTolerance })
     this.props.onFeatureHover(feature)
   }
 
   onFeatureClick(evt) {
     let pixel = this.map.getEventPixel(evt.originalEvent);
-    let feature = this.map.forEachFeatureAtPixel(pixel, function (x) {
-      return x
-    })
+    let feature = this.map.forEachFeatureAtPixel(pixel, function (feature) {
+      return feature
+    }, { hitTolerance: this.props.featureClickHitTolerance })
     let lonLat = ol.proj.toLonLat(evt.coordinate)
-    this.props.onFeatureClick(feature, lonLat)
+    this.props.onFeatureClick(evt, feature, lonLat)
   }
 
   focus() {
@@ -97,6 +97,7 @@ Map.propTypes = {
   onChangeSize: PropTypes.func,
   onFeatureHover: PropTypes.func,
   onFeatureClick: PropTypes.func,
+  featureClickHitTolerance: PropTypes.number,
   view: PropTypes.element.isRequired,
   useDefaultInteractions: PropTypes.bool.isRequired,
   useDefaultControls: PropTypes.bool.isRequired,
