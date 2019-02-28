@@ -67,7 +67,7 @@ export default class Map extends React.Component {
     let feature = this.map.forEachFeatureAtPixel(pixel, function (feature) {
       return feature
     }, { hitTolerance: this.props.featureClickHitTolerance })
-    this.props.onFeatureHover(feature, pixel)
+    this.props.onFeatureHover(feature)
   }
 
   onFeatureClick(evt) {
@@ -76,7 +76,7 @@ export default class Map extends React.Component {
       return feature
     }, { hitTolerance: this.props.featureClickHitTolerance })
     let lonLat = ol.proj.toLonLat(evt.coordinate)
-    this.props.onFeatureClick(feature, lonLat, pixel)
+    this.props.onFeatureClick(evt, feature, lonLat)
   }
 
   focus() {
