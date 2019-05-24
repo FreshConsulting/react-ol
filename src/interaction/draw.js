@@ -8,7 +8,8 @@ export default class Draw extends OLInteraction {
     return new ol.interaction.Draw({
       type: props.type,
       maxPoints: props.maxPoints,
-      minPoints: props.minPoints
+      minPoints: props.minPoints,
+      stopClick: props.stopClick,
     })
   }
 }
@@ -18,7 +19,8 @@ Draw.propTypes = Object.assign({}, OLInteraction.propTypes, {
   drawstart: PropTypes.func,
   type: PropTypes.string.isRequired,
   maxPoints: PropTypes.number,
-  minPoints: PropTypes.number
+  minPoints: PropTypes.number,
+  stopClick: PropTypes.bool,
 })
 
 Draw.olEvents = ["drawend", "drawstart"]
