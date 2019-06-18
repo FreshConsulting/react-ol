@@ -22,16 +22,16 @@ Modify.propTypes = Object.assign({}, OLInteraction.propTypes, {
   features: PropTypes.instanceOf(ol.Collection).isRequired,
   insertVertexCondition: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.function
+    PropTypes.func
   ]),
   style: PropTypes.oneOfType([
     PropTypes.instanceOf(ol.style.Style),
     PropTypes.object,
-    PropTypes.function,
+    PropTypes.func,
     PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.instanceOf(ol.style.Style),
       PropTypes.object,
-      PropTypes.function
+      PropTypes.func
     ]))
   ])
 })
