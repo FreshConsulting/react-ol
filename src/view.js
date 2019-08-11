@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import OLView from 'ol/View';
 import OLComponent from './ol-component';
 
 export default class View extends OLComponent {
@@ -12,7 +13,7 @@ export default class View extends OLComponent {
       rotation: props.initialRotation,
       zoom: props.initialZoom,
     };
-    this.view = new ol.View(opts);
+    this.view = new View(opts);
   }
 
   onMoveEnd(event) {
@@ -84,5 +85,5 @@ View.defaultProps = {
 }
 
 View.contextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(Map)
 }
