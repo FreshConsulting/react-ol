@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
-import ol from 'openlayers'
+import Map from 'ol/Map';
+import ImageLayer from 'ol/layer/Image';
 import OLLayer from './ol-layer';
 
 export default class Image extends OLLayer {
@@ -9,7 +10,7 @@ export default class Image extends OLLayer {
 
     let layerProps = this.buildLayerProps(props)
 
-    this.layer = new ol.layer.Image({
+    this.layer = new ImageLayer({
       ...layerProps,
     })
   }
@@ -43,9 +44,9 @@ Image.defaultProps = {
 }
 
 Image.contextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(Map)
 }
 
 Image.childContextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Image)
+  layer: PropTypes.instanceOf(ImageLayer)
 }
