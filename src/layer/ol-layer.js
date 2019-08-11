@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import OLPropTypes from '../ol-proptypes';
 import OLContainer from '../ol-container';
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import Select from 'ol/interaction/Select';
+import { click, pointerMove } from 'ol/events/condition';
 
 export default class OLLayer extends OLContainer {
     constructor(props) {
@@ -35,8 +38,8 @@ export default class OLLayer extends OLContainer {
     componentDidMount() {
         if (this.props.selectable) {
             let interactions = this.context.map.getInteractions()
-            this.selectInteraction = new ol.interaction.Select({
-                condition: ol.events.condition.click,
+            this.selectInteraction = new Select({
+                condition: click,
                 layers: [this.layer],
             })
             this.selectInteraction.on('select', this.props.onSelect)
@@ -45,8 +48,8 @@ export default class OLLayer extends OLContainer {
         }
         if (this.props.hoverable) {
             let interactions = this.context.map.getInteractions()
-            this.hoverInteraction = new ol.interaction.Select({
-                condition: ol.events.condition.pointerMove,
+            this.hoverInteraction = new Select({
+                condition: pointerMove,
                 layers: [this.layer],
             })
             this.hoverInteraction.on('select', this.props.onHover)
@@ -69,7 +72,7 @@ export default class OLLayer extends OLContainer {
 OLLayer.PropTypes = {
     opacity: PropTypes.number,
     visible: PropTypes.bool,
-    extent: PropTypes.instanceOf(ol.Extent),
+    extent: OLPropTypes.Extent,
     zIndex: PropTypes.number,
     minResolution: PropTypes.number,
     maxResolution: PropTypes.number,
@@ -87,5 +90,5 @@ OLLayer.defaultProps = {
 }
 
 OLLayer.contextTypes = {
-    map: PropTypes.instanceOf(ol.Map)
+    map: PropTypes.instanceOf(Map)
 }
