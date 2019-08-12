@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLFullScreen from 'ol/control/FullScreen';
 import OLControl from './ol-control';
 
 export default class FullScreen extends OLControl {
   createControl (props) {
-    return new ol.control.FullScreen({
+    return new OLFullScreen({
       className: props.className,
       keys: props.keys,
       label: props.label,
