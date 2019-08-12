@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Feature from 'ol/Feature';
+import Map from 'ol/Map';
+import OLPoint from 'ol/geom/Point';
 import OLGeometry from './ol-geometry';
 
 export default class Point extends OLGeometry {
   constructor(props) {
     super(props);
-    this.geometry = new ol.geom.Point();
+    this.geometry = new OLPoint();
     this.updateFromProps(props);
   }
 
@@ -59,6 +61,6 @@ Point.propTypes = {
 }
 
 Point.contextTypes = {
-  feature: PropTypes.instanceOf(ol.Feature),
-  map: PropTypes.instanceOf(ol.Map),
+  feature: PropTypes.instanceOf(Feature),
+  map: PropTypes.instanceOf(Map),
 }

@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Collection from 'ol/Collection';
+import Feature from 'ol/Feature';
+import Map from 'ol/Map';
+import Modify from 'ol/interaction/Modify';
 import OLComponent from '../ol-component';
 
 export default class OLGeometry extends OLComponent {
@@ -12,9 +15,9 @@ export default class OLGeometry extends OLComponent {
         this.context.feature.setGeometry(this.geometry);
         if (this.props.modify) {
             let interactions = this.context.map.getInteractions()
-            this.interaction = new ol.interaction.Modify({
-                features: new ol.Collection([this.context.feature]),
-                //insertVertexCondition: this.props.insertVertexCondition 
+            this.interaction = new Modify({
+                features: new Collection([this.context.feature]),
+                //insertVertexCondition: this.props.insertVertexCondition
                 // Note; as of 27/06/2017, insertVertexCondition is in 4.2.0 of OpenLayers, we can't upgrade yet as the @types package hasn't been updated
             })
             if (this.props.modifyStart) {
@@ -49,6 +52,6 @@ OLGeometry.propTypes = {
 }
 
 OLGeometry.contextTypes = {
-    feature: PropTypes.instanceOf(ol.Feature),
-    map: PropTypes.instanceOf(ol.Map),
+    feature: PropTypes.instanceOf(Feature),
+    map: PropTypes.instanceOf(Map),
 }

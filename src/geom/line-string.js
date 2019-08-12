@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Feature from 'ol/Feature';
+import Map from 'ol/Map';
+import OLLineString from 'ol/geom/LineString';
 import OLGeometry from './ol-geometry';
 
 export default class LineString extends OLGeometry {
   constructor(props) {
     super(props);
-    this.geometry = new ol.geom.LineString();
+    this.geometry = new OLLineString();
     this.updateFromProps(props);
   }
 
@@ -30,6 +32,6 @@ LineString.propTypes = {
 }
 
 LineString.contextTypes = {
-  feature: PropTypes.instanceOf(ol.Feature),
-  map: PropTypes.instanceOf(ol.Map),
+  feature: PropTypes.instanceOf(Feature),
+  map: PropTypes.instanceOf(Map),
 }
