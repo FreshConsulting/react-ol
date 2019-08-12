@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLDragBox from 'ol/interaction/DragBox';
 import OLInteraction from './ol-interaction';
 
 export default class DragBox extends OLInteraction {
   createInteraction (props) {
-    return new ol.interaction.DragBox({
+    return new OLDragBox({
       condition: props.condition
     })
   }

@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLDoubleClickZoom from 'ol/interaction/DoubleClickZoom';
 import OLInteraction from './ol-interaction';
 
 export default class DoubleClickZoom extends OLInteraction {
   createInteraction (props) {
-    return new ol.interaction.DoubleClickZoom({
+    return new OLDoubleClickZoom({
       delta: props.delta,
       duration: props.duration
     })

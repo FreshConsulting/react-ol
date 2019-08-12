@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLSelect from 'ol/interaction/Select';
 import OLInteraction from './ol-interaction';
 import { buildStyle } from '../style';
 
 export default class Select extends OLInteraction {
   createInteraction (props) {
-    return new ol.interaction.Select({
+    return new OLSelect({
       condition: props.condition,
       toggleCondition: props.toggleCondition,
       filter: props.filter,
