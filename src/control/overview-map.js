@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Collection from 'ol/Collection';
+import Layer from 'ol/layer/Layer';
+import OLOverviewMap from 'ol/control/OverviewMap';
+import View from 'ol/View';
 import OLControl from './ol-control';
 
 export default class OverviewMap extends OLControl {
   createControl (props) {
-    return new ol.control.OverviewMap({
+    return new OLOverviewMap({
       className: props.className,
       collapsed: props.collapsed,
       collapseLabel: props.collapseLabel,
@@ -25,9 +28,9 @@ OverviewMap.propTypes = Object.assign({}, OLControl.propTypes, {
   collapsible: PropTypes.bool,
   label: PropTypes.node,
   layers: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.instanceOf(ol.layer.Layer)),
-    PropTypes.instanceOf(ol.Collection)
+    PropTypes.arrayOf(PropTypes.instanceOf(Layer)),
+    PropTypes.instanceOf(Collection)
   ]),
   tipLabel: PropTypes.string,
-  view: PropTypes.instanceOf(ol.View)
+  view: PropTypes.instanceOf(View)
 })
