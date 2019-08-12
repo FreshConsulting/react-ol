@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
-import ol from 'openlayers'
+import BaseLayer from 'ol/layer/Base';
+import OLBingMaps from 'ol/source/BingMaps';
 import OLComponent from '../ol-component'
 
 export default class BingMaps extends OLComponent {
@@ -11,7 +12,7 @@ export default class BingMaps extends OLComponent {
 
     super(props);
 
-    this.source = new ol.source.BingMaps(spreadedProps)
+    this.source = new OLBingMaps(spreadedProps)
   }
 
   componentDidMount() {
@@ -25,5 +26,5 @@ BingMaps.propTypes = {
 }
 
 BingMaps.contextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Base)
+  layer: PropTypes.instanceOf(BaseLayer)
 }

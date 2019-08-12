@@ -381,12 +381,6 @@ declare namespace __OLReact {
         export class ImageArcGISRest extends OLComponent<ImageArcGISRestProps, any> {
         }
 
-        interface MapQuestProps {
-            layer: string;
-        }
-        export class MapQuest extends OLComponent<MapQuestProps, any> {
-        }
-
         interface OSMProps {
         }
         export class OSM extends OLComponent<OSMProps, any> {
