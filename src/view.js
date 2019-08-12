@@ -13,7 +13,7 @@ export default class View extends OLComponent {
       rotation: props.initialRotation,
       zoom: props.initialZoom,
     };
-    this.view = new View(opts);
+    this.view = new OLView(opts);
   }
 
   onMoveEnd(event) {

@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import OLOverlay from 'ol/Overlay';
 import OLComponent from './ol-component';
 
 export default class Overlay extends OLComponent {
   constructor(props) {
     super(props);
-    this.overlay = new ol.Overlay({
+    this.overlay = new OLOverlay({
       id: props.id,
       offset: props.offset,
       position: props.position,
@@ -106,5 +107,5 @@ Overlay.propTypes = {
 }
 
 Overlay.contextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(Map)
 }

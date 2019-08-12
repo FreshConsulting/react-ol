@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 let OLPropTypes = {}
 
 /*
- * Custom validator funciton for ol.Extent (an array of four numbers).
+ * Custom validator funciton for ol/Extent (an array of four numbers).
  */
 OLPropTypes.Extent = function(props, propName, componentName) {
   if (
