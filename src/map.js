@@ -17,6 +17,9 @@ export default class Map extends React.Component {
       overlays: []
     })
 
+    this.onFeatureHover = this.onFeatureHover.bind(this);
+    this.onFeatureClick = this.onFeatureClick.bind(this);
+
     if (props.onChangeSize) {
       this.map.on('change:size', this.props.onChangeSize);
     }
@@ -24,10 +27,10 @@ export default class Map extends React.Component {
       this.map.on('singleclick', this.props.onSingleClick);
     }
     if (this.props.onFeatureHover) {
-      this.map.on('pointermove', this.onFeatureHover, this)
+      this.map.on('pointermove', this.onFeatureHover)
     }
     if (this.props.onFeatureClick) {
-      this.map.on('singleclick', this.onFeatureClick, this)
+      this.map.on('singleclick', this.onFeatureClick)
     }
   }
 

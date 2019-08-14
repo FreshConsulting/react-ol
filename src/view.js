@@ -14,6 +14,8 @@ export default class View extends OLComponent {
       zoom: props.initialZoom,
     };
     this.view = new OLView(opts);
+
+    this.onMoveEnd = this.onMoveEnd.bind(this);
   }
 
   onMoveEnd(event) {
@@ -47,7 +49,7 @@ export default class View extends OLComponent {
     this.context.map.setView(this.view);
     this.updateFromProps_(this.props);
 
-    this.context.map.on("moveend", this.onMoveEnd, this);
+    this.context.map.on("moveend", this.onMoveEnd);
   }
 
   componentWillReceiveProps(props) {
