@@ -2,33 +2,16 @@
   "name": "react-ol",
   "version": "0.1.18",
   "description": "React interface for openlayers",
-  "main": "lib/index.js",
-  "scripts": {
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "prepublish": "npm run compile",
-    "postinstall": "node scripts/postinstall.js"
-  },
+  "module": "src/index.js",
   "author": "richard.hills@gmail.com",
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@types/prop-types": "^15.5.1",
-    "babel-cli": "^6.23.0",
-    "babel-loader": "^8.0.6",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
-  },
-  "dependencies": {
-    "ol": "^5.3.3",
-    "prop-types": "^15.5.10"
-  },
   "repository": "https://github.com/FreshConsulting/react-ol.git",
   "license": "MIT",
   "peerDependencies": {
+    "ol": "^5.3.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
   }
 }
