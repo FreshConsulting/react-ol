@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLDragZoom from 'ol/interaction/DragZoom';
 import OLInteraction from './ol-interaction';
 
 export default class DragZoom extends OLInteraction {
   createInteraction (props) {
-    return new ol.interaction.DragZoom({
+    return new OLDragZoom({
       condition: props.condition,
       duration: props.duration,
       out: props.out

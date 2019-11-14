@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import BaseLayer from 'ol/layer/Base';
+import OLXYZ from 'ol/source/XYZ';
 import OLComponent from '../ol-component';
 
 export default class XYZ extends OLComponent {
   constructor(props) {
     super(props);
-    this.source = new ol.source.XYZ(this.props);
+    this.source = new OLXYZ(this.props);
   }
 
   componentDidMount() {
@@ -21,5 +22,5 @@ XYZ.propTypes = {
 }
 
 XYZ.contextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Base)
+  layer: PropTypes.instanceOf(BaseLayer)
 }

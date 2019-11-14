@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLKeyboardZoom from 'ol/interaction/KeyboardZoom';
 import OLInteraction from './ol-interaction';
 
 export default class KeyboardZoom extends OLInteraction {
   createInteraction (props) {
-    return new ol.interaction.KeyboardZoom({
+    return new OLKeyboardZoom({
       condition: props.condition,
       delta: props.delta,
       duration: props.duration

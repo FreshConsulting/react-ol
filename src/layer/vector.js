@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import Style from 'ol/style/Style';
+import VectorLayer from 'ol/layer/Vector';
 import OLLayer from './ol-layer';
 import { buildStyle } from '../style';
 
@@ -10,7 +12,7 @@ export default class Vector extends OLLayer {
 
     let layerProps = this.buildLayerProps(props)
 
-    this.layer = new ol.layer.Vector({
+    this.layer = new VectorLayer({
       ...layerProps,
       style: buildStyle(props.style),
       updateWhileAnimating: props.updateWhileAnimating,
@@ -45,21 +47,21 @@ Vector.propTypes = {
   updateWhileAnimating: PropTypes.bool,
   updateWhileInteracting: PropTypes.bool,
   style: PropTypes.oneOfType([
-    PropTypes.instanceOf(ol.style.Style),
+    PropTypes.instanceOf(Style),
     PropTypes.object,
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.oneOfType([
-      PropTypes.instanceOf(ol.style.Style),
+      PropTypes.instanceOf(Style),
       PropTypes.object
     ]))
   ])
 }
 
 Vector.contextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(Map)
 }
 
 Vector.childContextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Vector),
-  map: PropTypes.instanceOf(ol.Map)
+  layer: PropTypes.instanceOf(VectorLayer),
+  map: PropTypes.instanceOf(Map)
 }

@@ -1,18 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import { defaults as controlDefaults } from 'ol/control';
+import { defaults as interactionDefaults } from 'ol/interaction';
+import OLMap from 'ol/Map';
+import { toLonLat } from 'ol/proj';
 import OLComponent from './ol-component';
 
 export default class Map extends React.Component {
   constructor(props) {
     super(props)
-    this.map = new ol.Map({
+    this.map = new OLMap({
       loadTilesWhileAnimating: props.loadTilesWhileAnimating,
       loadTilesWhileInteracting: props.loadTilesWhileInteracting,
-      interactions: props.useDefaultInteractions ? ol.interaction.defaults() : [],
-      controls: props.useDefaultControls ? ol.control.defaults() : [],
+      interactions: props.useDefaultInteractions ? interactionDefaults() : [],
+      controls: props.useDefaultControls ? controlDefaults() : [],
       overlays: []
     })
+
+    this.onFeatureHover = this.onFeatureHover.bind(this);
+    this.onFeatureClick = this.onFeatureClick.bind(this);
 
     if (props.onChangeSize) {
       this.map.on('change:size', this.props.onChangeSize);
@@ -21,10 +27,10 @@ export default class Map extends React.Component {
       this.map.on('singleclick', this.props.onSingleClick);
     }
     if (this.props.onFeatureHover) {
-      this.map.on('pointermove', this.onFeatureHover, this)
+      this.map.on('pointermove', this.onFeatureHover)
     }
     if (this.props.onFeatureClick) {
-      this.map.on('singleclick', this.onFeatureClick, this)
+      this.map.on('singleclick', this.onFeatureClick)
     }
   }
 
@@ -75,7 +81,7 @@ export default class Map extends React.Component {
     let feature = this.map.forEachFeatureAtPixel(pixel, function (feature) {
       return feature
     }, { hitTolerance: this.props.featureClickHitTolerance })
-    let lonLat = ol.proj.toLonLat(evt.coordinate)
+    let lonLat = toLonLat(evt.coordinate)
     this.props.onFeatureClick(evt, feature, lonLat)
   }
 
@@ -116,5 +122,5 @@ Map.defaultProps = {
 }
 
 Map.childContextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(OLMap)
 }

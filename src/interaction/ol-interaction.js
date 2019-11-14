@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import { unByKey } from 'ol/Observable';
 import OLComponent from '../ol-component';
 
 export default class OLInteraction extends OLComponent {
@@ -42,7 +43,7 @@ export default class OLInteraction extends OLComponent {
   updateEventHandler_ (name, handler) {
     const key = this.eventHandlerKeys_[name]
     if (key) {
-      ol.Observable.unByKey(key)
+      unByKey(key)
       delete this.eventHandlerKeys_[name]
     }
     if (handler) {
@@ -71,5 +72,5 @@ OLInteraction.defaultProps = {
 }
 
 OLInteraction.contextTypes = {
-  map: PropTypes.instanceOf(ol.Map)
+  map: PropTypes.instanceOf(Map)
 }

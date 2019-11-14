@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import BaseLayer from 'ol/layer/Base';
+import OLOSM from 'ol/source/OSM';
 import OLComponent from '../ol-component';
 
 export default class OSM extends OLComponent {
   constructor(props) {
     super(props);
-    this.source = new ol.source.OSM(this.props);
+    this.source = new OLOSM(this.props);
   }
 
   componentDidMount() {
@@ -18,5 +19,5 @@ OSM.propTypes = {
 }
 
 OSM.contextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Base)
+  layer: PropTypes.instanceOf(BaseLayer)
 }

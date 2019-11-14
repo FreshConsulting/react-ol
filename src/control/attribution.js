@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import OLAttribution from 'ol/control/Attribution';
 import OLControl from './ol-control';
 
 export default class Attribution extends OLControl {
   createControl (props) {
-    return new ol.control.Attribution({
+    return new OLAttribution({
       className: props.className,
       collapsed: props.collapsed,
       collapseLabel: props.collapseLabel,

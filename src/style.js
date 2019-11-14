@@ -1,10 +1,15 @@
-import ol from 'openlayers';
+import CircleStyle from 'ol/style/Circle';
+import Fill from 'ol/style/Fill';
+import Icon from 'ol/style/Icon';
+import RegularShape from 'ol/style/RegularShape';
+import Stroke from 'ol/style/Stroke';
+import Style from 'ol/style/Style';
+import Text from 'ol/style/Text';
 
 const STYLE_KEY_FACTORIES = {
-  geometry: (value) => new ol.style.Geometry(value),
-  fill: (value) => new ol.style.Fill(value),
+  fill: (value) => new Fill(value),
   image: (value) => buildImage(value),
-  stroke: (value) => new ol.style.Stroke(value),
+  stroke: (value) => new Stroke(value),
   text: (value) => buildText(value),
   zIndex: (value) => value
 };
@@ -22,7 +27,7 @@ export function buildStyle(style) {
     return style;
   }
 
-  if (ol.style.Style.prototype.isPrototypeOf(style)) {
+  if (Style.prototype.isPrototypeOf(style)) {
     return style;
   }
 
@@ -30,7 +35,7 @@ export function buildStyle(style) {
 
   evaluateKeys(style, result);
 
-  return new ol.style.Style(result);
+  return new Style(result);
 }
 
 function evaluateKeys(style, result) {
@@ -62,7 +67,7 @@ function buildText(style) {
 
   textStyle.text = textContent;
 
-  return new ol.style.Text(textStyle);
+  return new Text(textStyle);
 }
 
 function buildImage(style) {
@@ -80,11 +85,11 @@ function buildImage(style) {
 
   switch (style.type) {
     case 'circle':
-      return new ol.style.Circle(imageStyle);
+      return new CircleStyle(imageStyle);
     case 'icon':
-      return new ol.style.Icon(imageStyle);
+      return new Icon(imageStyle);
     case 'regular-shape':
-      return new ol.style.RegularShape(imageStyle);
+      return new RegularShape(imageStyle);
   }
 }
 

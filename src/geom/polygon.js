@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ol from 'openlayers';
+import Map from 'ol/Map';
+import Feature from 'ol/Feature';
+import OLPolygon from 'ol/geom/Polygon';
 import OLGeometry from './ol-geometry';
 
 export default class Polygon extends OLGeometry {
   constructor(props) {
     super(props);
-    this.geometry = new ol.geom.Polygon();
+    this.geometry = new OLPolygon();
     this.updateFromProps(props);
   }
 
@@ -30,6 +32,6 @@ Polygon.propTypes = {
 }
 
 Polygon.contextTypes = {
-  feature: PropTypes.instanceOf(ol.Feature),
-  map: PropTypes.instanceOf(ol.Map),
+  feature: PropTypes.instanceOf(Feature),
+  map: PropTypes.instanceOf(Map),
 }

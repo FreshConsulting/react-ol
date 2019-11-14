@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react'
-import ol from 'openlayers'
+import BaseLayer from 'ol/layer/Base';
+import Collection from 'ol/Collection';
+import Source from 'ol/source/Source';
+import Map from 'ol/Map';
+import OLVector from 'ol/source/Vector';
 import OLComponent from '../ol-component'
 import * as interaction from '../interaction'
 
 export default class Vector extends OLComponent {
   constructor(props) {
     super(props)
-    this.source = new ol.source.Vector(
+    this.source = new OLVector(
       Object.assign({
-        features: new ol.Collection()
+        features: new Collection()
       }, this.props)
     )
   }
@@ -34,10 +38,10 @@ Vector.defaultProps = {
 }
 
 Vector.contextTypes = {
-  layer: PropTypes.instanceOf(ol.layer.Base),
-  map: PropTypes.instanceOf(ol.Map)
+  layer: PropTypes.instanceOf(BaseLayer),
+  map: PropTypes.instanceOf(Map)
 }
 
 Vector.childContextTypes = {
-  source: PropTypes.instanceOf(ol.source.Source)
+  source: PropTypes.instanceOf(Source)
 }

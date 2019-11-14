@@ -2,33 +2,16 @@
   "name": "react-ol",
   "version": "0.1.18",
   "description": "React interface for openlayers",
-  "main": "lib/index.js",
-  "scripts": {
-    "compile": "babel -d lib/ src/",
-    "watch": "babel -d lib/ src/ --watch",
-    "prepublish": "npm run compile",
-    "postinstall": "node scripts/postinstall.js"
-  },
+  "main": "src/index.js",
   "author": "richard.hills@gmail.com",
-  "devDependencies": {
-    "@types/prop-types": "^15.5.1",
-    "babel-cli": "^6.23.0",
-    "babel-loader": "^6.3.2",
-    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.23.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
-  },
+  "repository": "https://github.com/FreshConsulting/react-ol.git",
+  "license": "MIT",
   "peerDependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "ol": "^5.3.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "openlayers": "^4.0.1",
-    "prop-types": "^15.5.10"
-  },
-  "repository": "https://github.com/FreshConsulting/react-ol.git",
-  "license": "MIT"
+    "prop-types": "^15.7.2"
+  }
 }
